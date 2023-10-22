@@ -10,13 +10,13 @@ const generateNewShortUrl = async (req, res) => {
   }
 
   const newShortId = randomUUID();
-  await urlModel.create({
+  const result = await urlModel.create({
     shortId: newShortId,
     redirectUrl: data.url,
     visitHistory: [],
   });
 
-  return res.json({ id: newShortId });
+  return res.json({ id: newShortId, result });
 };
 
 const handleAnalytic = async (req, res) => {
